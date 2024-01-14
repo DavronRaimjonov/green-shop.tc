@@ -1,0 +1,58 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "standard-with-typescript",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }],
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "@typescript-eslint/no-base-to-string": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/prefer-optional-chain": "off",
+    " @typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/await-thenable": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "no-unneeded-ternary": "off",
+    "@typescript-eslint/consistent-type-exports": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
+    // "@typescript-eslint/naming-convention": [
+    //   "error",
+    //   {
+    //     "selector": "variableLike",
+    //     "format": [
+    //       "camelCase",
+    //       "strictCamelCase",
+    //       "PascalCase",
+    //       "StrictPascalCase",
+    //       "snake_case",
+    //       "UPPER_CASE"
+    //     ]
+    //   }
+    // ]
+  }
+}
