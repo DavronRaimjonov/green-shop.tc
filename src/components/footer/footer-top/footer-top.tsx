@@ -37,7 +37,7 @@ const FooterTop: FC = () => {
         </a>
       </div>
       <div>
-        <a className={`${info_style}`} href="tel:+88 01911 717 490">
+        <a className={`${info_style}`} href="tel:+770224446">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/aema-image-upload.appspot.com/o/greenshop%2Ficons%2Fcall.svg?alt=media&token=3841a4f9-b499-4e8c-98d3-a05fe4edc39f"
             alt="tel"

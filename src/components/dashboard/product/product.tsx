@@ -25,6 +25,7 @@ const Product: FC = () => {
       range_min,
       range_max,
       sort,
+      type,
     },
   });
   return (

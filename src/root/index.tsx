@@ -6,6 +6,9 @@ import { Home, ProductCart, ProductCheckout, Profile } from "../pages";
 import { useIsAuthenticated } from "react-auth-kit";
 import { path_profile } from "../utils";
 import Blog from "../pages/blog";
+import Rendering from "../components/blog/rendering";
+import User from "../components/user";
+import CreateBlog from "../components/blog/create-blog";
 
 const Root: FC = () => {
   const isAuthed = useIsAuthenticated()();
@@ -26,6 +29,9 @@ const Root: FC = () => {
           <Route path="/profile" element={<Navigate to={"/"} />} />
         )}
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:user_id/:blog_id" element={<Rendering />} />
+        <Route path="/user/:user_id" element={<User />} />
+        <Route path="/blog/create-blog" element={<CreateBlog />} />
       </Route>
     </Routes>
   );

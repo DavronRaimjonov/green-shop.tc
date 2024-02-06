@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 import {
   LoginOutlined,
   SearchOutlined,
@@ -14,14 +14,29 @@ import {
 import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
 import type { AuthUser } from "../../@types";
 import { Link, useNavigate } from "react-router-dom";
-import { Badge } from "antd";
+import { Badge, Popover } from "antd";
+import Notification from "./notification";
 const Navbar: FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
   const auth: AuthUser = useAuthUser()() ?? {};
   const isAuthed = useIsAuthenticated()();
   const dispatch = useReduxDispatch();
   const { data } = useReduxSelector((state) => state.productSlice);
   const navigate = useNavigate();
   const iconStyle: string = "cursor-pointer text-[23px] max-sm:text-[20px]";
+  const btn_visiblity = () => {
+    if (isAuthed) {
+      navigate("/profile");
+    } else {
+      dispatch(
+        setAuthorizationModalVisibility({
+          loading: false,
+          open: true,
+        }),
+      );
+    }
+  };
   return (
     <header className="w-[80%] m-auto gap-3 flex justify-between items-center h-[90px] border-b border-[rgba(70, 163, 88, 0.50)] sticky top-0 z-50 bg-white max-sm:w-[95%]">
       <Link to={"/"}>
@@ -40,23 +55,24 @@ const Navbar: FC = () => {
       </nav>
       <nav className="flex items-center gap-[30px] max-md:gap-[20px] max-sm:gap-[10px]">
         <SearchOutlined className={`${iconStyle}`} />
-        <BellOutlined className={`${iconStyle}`} />
+        <Popover
+          onOpenChange={(visable) => setOpen(visable)}
+          open={open}
+          title={"Notifications"}
+          content={<Notification />}
+          trigger={"click"}
+        >
+          <Badge dot={isAuthed}>
+            <BellOutlined className={`${iconStyle}`} />
+          </Badge>
+        </Popover>
         <Link to={"/product-cart"}>
           <Badge count={data?.length}>
             <ShoppingCartOutlined className={`${iconStyle}`} />
           </Badge>
         </Link>
         <button
-          onClick={() => {
-            isAuthed
-              ? navigate("/profile")
-              : dispatch(
-                  setAuthorizationModalVisibility({
-                    loading: false,
-                    open: true,
-                  }),
-                );
-          }}
+          onClick={() => btn_visiblity()}
           className="text-white w-[100px] h-[35px]  bg-[#46A358] flex items-center gap-1 justify-center rounded-md max-md:hidden"
         >
           {isAuthed ? (

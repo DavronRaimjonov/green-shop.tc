@@ -29,6 +29,12 @@ import Products from "../components/Profile/profile-pages/products";
 import Adress from "../components/Profile/profile-pages/adress";
 import Wishlist from "../components/Profile/profile-pages/wishlist";
 import Order from "../components/Profile/profile-pages/order";
+import About from "../components/user/body/about";
+import ProductsItem from "../components/user/body/products";
+import Posts from "../components/user/body/posts";
+import Likes from "../components/user/body/likes";
+import Followers from "../components/user/body/followers";
+import type { FC } from "react";
 type HeroMockType = HeroMockItemType[];
 type PostItem = PostMockItemType[];
 type InfoItem = InfoMockItemType[];
@@ -36,6 +42,11 @@ type AdviceITem = AdviceMockItemType[];
 type FooterItem = FooterLinksType[];
 type TypeFilterItem = TypeFilter[];
 type PathProfileTypeItem = PathProfileType[];
+export interface ProfleTabType {
+  key: string;
+  label: string;
+  Children: FC;
+}
 export const hero_mock: HeroMockType = [
   {
     id: 0,
@@ -224,5 +235,33 @@ export const path_profile: PathProfileTypeItem = [
     Component: Order,
     Icon: DashboardOutlined,
     title: "Track Order",
+  },
+];
+
+export const profile_tab_items: ProfleTabType[] = [
+  {
+    key: "1",
+    label: "About",
+    Children: About,
+  },
+  {
+    key: "2",
+    label: "Products",
+    Children: ProductsItem,
+  },
+  {
+    key: "3",
+    label: "Posts",
+    Children: Posts,
+  },
+  {
+    key: "4",
+    label: "Likees",
+    Children: Likes,
+  },
+  {
+    key: "5",
+    label: "Followers",
+    Children: Followers,
   },
 ];

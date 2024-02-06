@@ -50,6 +50,13 @@ export interface AuthUser {
   additional_street_address?: string;
   state?: string;
   zip?: string;
+  followers?: string[];
+  permission?: {
+    create: boolean;
+    update: boolean;
+    delete: boolean;
+    read: boolean;
+  };
 }
 
 export interface AuthPropsType {
@@ -198,3 +205,21 @@ export type UploadType = {
     xhr: typeof XMLHttpRequest;
   };
 };
+export interface BlogTypeItem {
+  _id: string;
+  _v: number;
+  views: number;
+  title: string;
+  short_description: string;
+  reaction_length: number;
+  created_by: string;
+  created_at: string;
+  content: string;
+}
+export interface UserType {
+  name?: string;
+  surname?: string;
+  followers?: string[];
+  profile_photo?: string;
+  _id?: string;
+}

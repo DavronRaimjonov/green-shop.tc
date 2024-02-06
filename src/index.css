@@ -33,3 +33,10 @@
   background-color: #46a358;
   border-color: #46a358;
 }
+.ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #46a358;
+  border-color: #46a358 !important;
+}
+.ant-tabs .ant-tabs-ink-bar {
+  background: #46a358 !important;
+}

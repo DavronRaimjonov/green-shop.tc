@@ -108,8 +108,24 @@ const useHandler = () => {
     if (isLiked) return unLike();
     return like();
   };
+  const followUserUpdateCashe = ({ _id }: { _id: string }) => {
+    return userUpdeter({
+      shouldUpdate: { followers: [...(authUser.followers ?? []), _id] },
+    });
+  };
+  const unfollowUserUpdateCashe = ({ _id }: { _id: string }) => {
+    return userUpdeter({
+      shouldUpdate: { followers: authUser.followers?.filter((v) => v !== _id) },
+    });
+  };
 
-  return { likeHandler, accountDetailsUpdater, adressDetailUpdeter };
+  return {
+    likeHandler,
+    accountDetailsUpdater,
+    adressDetailUpdeter,
+    followUserUpdateCashe,
+    unfollowUserUpdateCashe,
+  };
 };
 
 export default useHandler;
